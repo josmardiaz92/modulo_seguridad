@@ -50,5 +50,15 @@ public class Ejercicio2 {
         Rol r1=new Rol(1,"Administrador","Tienen todos los privilegios","A");
         Rol r2=new Rol(2,"Propietario","No tiene todos los privilegios","A");
         Rol r3=new Rol(3,"Propietario2","No tiene todos los privilegios","A");
+        if(r1.cod_rol<r2.cod_rol){ //*Esto en caso de datos numericos */
+            System.out.println("El objeto 1 se creó primero...");
+        }else{
+            System.out.println("El objeto 2 se creó primero...");
+        }
+        if(r3.nom_rol.equals("Administrador")){
+            System.out.println("El usuario es Administrador");
+        }else{
+            System.out.println("El usuario no es Administrador");
+        }
     }
 }
