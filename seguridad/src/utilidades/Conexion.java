@@ -15,8 +15,4 @@ public class Conexion {
     public Connection getConnection(){
         return conex;
     }//esto nos permite retornar el valor para saber que devuelve la conexion
-    public static void main(String[] args) {
-        Conexion c=new Conexion();
-        
-    }
 }
