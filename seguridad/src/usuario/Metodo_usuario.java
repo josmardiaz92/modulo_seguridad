@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 import utilidades.Conexion;
 
@@ -43,7 +42,7 @@ public class Metodo_usuario {
         Connection con;
         PreparedStatement ps;
         ResultSet rs;
-        String sql="select seguridad.usuario_modificar('"+u.getCod_usu()+"','"+u.getAli_usu()+"','"+u.getEma_usu()+"','"+u.getCla_usu()+"','"+u.getEst_usu()+"')";
+        String sql="select seguridad.usuario_modificar("+u.getCod_usu()+",'"+u.getAli_usu()+"','"+u.getEma_usu()+"','"+u.getCla_usu()+"','"+u.getEst_usu()+"')";
         try{
             con=cn.getConnection();
             ps=con.prepareStatement(sql);
@@ -61,7 +60,7 @@ public class Metodo_usuario {
         Connection con;
         PreparedStatement ps;
         ResultSet rs;
-        String sql="select seguridad.usuario_eliminar('"+u.getCod_usu()+"')";
+        String sql="select seguridad.usuario_eliminar("+u.getCod_usu()+")";
         try{
             con=cn.getConnection();
             ps=con.prepareStatement(sql);
@@ -115,7 +114,7 @@ public class Metodo_usuario {
         Connection con;
         PreparedStatement ps;
         ResultSet rs;
-        String sql="select seguridad.usuario_buscar('"+u.getCod_usu()+"')";
+        String sql="select seguridad.usuario_buscar("+u.getCod_usu()+")";
         ArrayList<Usuario> lista=new ArrayList<>();
         try{
             con=cn.getConnection();
