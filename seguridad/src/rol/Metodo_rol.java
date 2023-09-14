@@ -70,7 +70,13 @@ public class Metodo_rol {
             con=cn.getConnection();
             ps=con.prepareStatement(sql);
             rs=ps.executeQuery();
-            System.out.println("Rol eliminado correctamente");
+            if(rs.next()){
+                if(rs.getString(1)==null){
+                    System.out.println("Rol no encontrado");
+                }else{
+                System.out.println("Rol con el codigo "+rs.getString(1)+" eliminado correctamente");
+                }
+            }
             con.close();
         }catch(SQLException e){
             System.out.println("Error al eliminar el rol");
@@ -114,7 +120,7 @@ public class Metodo_rol {
     public void rol_buscar(){
         Conexion cn=new Conexion();
         Rol r=new Rol();
-        r.setCod_rol(4);
+        r.setCod_rol(3);
         Connection con;
         PreparedStatement ps;
         ResultSet rs;
@@ -137,12 +143,16 @@ public class Metodo_rol {
                 System.out.println("Código: "+r1.getCod_rol()+" Nombre: "+r1.getNom_rol()+" Descripción: "+r1.getDes_rol()+" Estatus: "+r1.getEst_rol());
             }
             con.close();
-            Iterator<Rol> iter=lista.iterator();
-            System.out.println("iterator");
-            while(iter.hasNext()){
-                Rol r2=new Rol();
-                r2=iter.next();
-                System.out.println("Código: "+r2.getCod_rol()+" Nombre: "+r2.getNom_rol()+" Descripción: "+r2.getDes_rol()+" Estatus: "+r2.getEst_rol());
+            if(lista.size()>0){
+                Iterator<Rol> iter=lista.iterator();
+                System.out.println("iterator");
+                while(iter.hasNext()){
+                    Rol r2=new Rol();
+                    r2=iter.next();
+                    System.out.println("Código: "+r2.getCod_rol()+" Nombre: "+r2.getNom_rol()+" Descripción: "+r2.getDes_rol()+" Estatus: "+r2.getEst_rol());
+                }
+            }else{
+                System.out.println("Rol no encontrado");
             }
         }catch(SQLException e){
             System.out.println("Error al buscar los roles");
@@ -150,6 +160,6 @@ public class Metodo_rol {
     }
     public static void main(String[] args) {
         Metodo_rol i=new Metodo_rol();
-        i.rol_eliminar();
+        i.rol_buscar();
     }
 }

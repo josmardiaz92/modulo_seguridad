@@ -25,7 +25,9 @@ public class Metodo_usuario {
             con=cn.getConnection();
             ps=con.prepareStatement(sql);
             rs=ps.executeQuery();
-            System.out.println("Usuario agregado correctamente");
+            if(rs.next()){
+                System.out.println("Usuario agregado correctamente con el codigo: "+rs.getString(1));
+            }
             con.close();
         }catch(SQLException e){
             System.out.println("Error al agregar el usuario");
@@ -47,7 +49,13 @@ public class Metodo_usuario {
             con=cn.getConnection();
             ps=con.prepareStatement(sql);
             rs=ps.executeQuery();
-            System.out.println("Usuario modificado correctamente");
+            if(rs.next()){
+                if(rs.getString(1)==null){
+                    System.out.println("Usuario no encontrado");
+                }else{
+                System.out.println("Usuario con el codigo "+rs.getString(1)+" modificado correctamente");
+                }
+            }
             con.close();
         }catch(SQLException e){
             System.out.println("Error al modificar el usuario");
@@ -65,7 +73,13 @@ public class Metodo_usuario {
             con=cn.getConnection();
             ps=con.prepareStatement(sql);
             rs=ps.executeQuery();
-            System.out.println("Usuario eliminado correctamente");
+            if(rs.next()){
+                if(rs.getString(1)==null){
+                    System.out.println("Usuario no encontrado");
+                }else{
+                System.out.println("Usuario con el codigo "+rs.getString(1)+" eliminado correctamente");
+                }
+            }
             con.close();
         }catch(SQLException e){
             System.out.println("Error al eliminar el usuario");
