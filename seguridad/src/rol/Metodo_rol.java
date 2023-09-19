@@ -65,7 +65,7 @@ public class Metodo_rol {
         Connection con;
         PreparedStatement ps;
         ResultSet rs;
-        String sql="select seguridad.rol_eliminar('"+r.getCod_rol()+"')";
+        String sql="select seguridad.rol_eliminar("+r.getCod_rol()+")";
         try{
             con=cn.getConnection();
             ps=con.prepareStatement(sql);
